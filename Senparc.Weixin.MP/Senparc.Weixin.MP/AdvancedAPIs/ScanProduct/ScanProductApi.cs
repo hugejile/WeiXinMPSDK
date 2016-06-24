@@ -188,7 +188,7 @@ namespace Senparc.Weixin.MP.AdvancedAPIs.ScanProduct
         /// <param name="keystr"></param>
         /// <param name="timeOut"></param>
         /// <returns></returns>
-        public static ProductListResult GetProductList(string accessTokenOrAppId, int offset, int limit, string status = null, string keystr = null, int timeOut = Config.TIME_OUT)
+        public static ProductListResult GetProductList(string accessTokenOrAppId, int offset, int limit, ProductScanStatus? status = null, string keystr = null, int timeOut = Config.TIME_OUT)
         {
             return ApiHandlerWapper.TryCommonApi(accessToken =>
             {
@@ -197,7 +197,7 @@ namespace Senparc.Weixin.MP.AdvancedAPIs.ScanProduct
                 {
                     offset = offset.ToString(),
                     limit = limit.ToString(),
-                    status = status,
+                    status = status.HasValue ? status.ToString() : null,
                     keystr = keystr,
                 };
 
@@ -206,6 +206,25 @@ namespace Senparc.Weixin.MP.AdvancedAPIs.ScanProduct
                 return CommonJsonSend.Send<ProductListResult>(accessToken, urlFormat, msgData, timeOut: timeOut);
 
             }, accessTokenOrAppId);
+        }
+
+        public static ProductListResult GetAllProducts(string accessTokenOrAppId, ProductScanStatus? status = null, string keystr = null, int timeOut = Config.TIME_OUT)
+        {
+            var result = GetGoods(accessTokenOrAppId, 0, status, keystr, timeOut);
+
+            return result;
+        }
+
+        private static ProductListResult GetGoods(string accessTokenOrAppId, int offset, ProductScanStatus? status, string keystr, int timeOut)
+        {
+            var wGood = Senparc.Weixin.MP.AdvancedAPIs.ScanProduct.ScanProductApi.GetProductList(accessTokenOrAppId, offset, 2, status, keystr, timeOut);
+
+            var goods = wGood.key_list;
+
+            if (goods.Count == 2)
+                wGood.key_list.AddRange(GetGoods(accessTokenOrAppId, offset + 2, status, keystr, timeOut).key_list);
+
+            return wGood;
         }
 
         /// <summary>
