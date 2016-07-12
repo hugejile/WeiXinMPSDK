@@ -112,6 +112,11 @@ namespace Senparc.Weixin
         解析JSON_XML内容错误 = 47001,
         api功能未授权 = 48001,
         用户未授权该api = 50001,
+
+        请上传图片 = 61300,
+        不存在产品 = 61303,
+        不存在产品1 = 61334,
+
         参数错误invalid_parameter = 61451,
         无效客服账号invalid_kf_account = 61452,
         客服帐号已存在kf_account_exsited = 61453,

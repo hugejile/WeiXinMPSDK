@@ -736,16 +736,18 @@ namespace Senparc.Weixin.MP
         请求成功
     }
 
-    public enum ProductPublicStatus
-    {
-        On,
-        Off
-    }
-
     public enum ProductKeyStandardOptions
     {
         ean8,
         ean13 = 4,
         qrcode
+    }
+
+    public enum ProductScanStatus
+    {
+        on = 0,
+        off = 2,
+        check = 3,
+        reject = 4
     }
 }

@@ -79,7 +79,6 @@ namespace Senparc.Weixin.MP.AdvancedAPIs.ScanProduct
             }, accessTokenOrAppId);
         }
 
-
         /// <summary>
         /// 提交审核/取消发布商品
         /// </summary>
@@ -89,7 +88,7 @@ namespace Senparc.Weixin.MP.AdvancedAPIs.ScanProduct
         /// <param name="keyStandard">商品编码标准</param>
         /// <param name="timeOut"></param>
         /// <returns></returns>
-        public static PublicProductResult PublicProduct(string accessTokenOrAppId, string keyStr, ProductKeyStandardOptions keyStandard, ProductPublicStatus status, int timeOut = Config.TIME_OUT)
+        public static PublicProductResult PublicProduct(string accessTokenOrAppId, string keyStr, ProductKeyStandardOptions keyStandard, ProductScanStatus status, int timeOut = Config.TIME_OUT)
         {
             return ApiHandlerWapper.TryCommonApi(accessToken =>
             {

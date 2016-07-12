@@ -172,7 +172,7 @@ namespace Senparc.Weixin.MP.Sample.Controllers
             }
 
             //通过，用code换取access_token
-            var componentAccessToken = ComponentContainer.TryGetComponentAccessToken(component_AppId, component_Secret);
+            var componentAccessToken = ComponentContainer.GetComponentAccessToken(component_AppId, component_Secret);
 
             var result = Open.OAuthAPIs.OAuthApi.GetAccessToken(appId, component_AppId, componentAccessToken, code);//TODO:使用Container
 
