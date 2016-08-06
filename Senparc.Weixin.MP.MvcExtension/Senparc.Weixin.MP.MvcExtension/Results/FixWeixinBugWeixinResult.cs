@@ -80,6 +80,10 @@ namespace Senparc.Weixin.MP.MvcExtension
                 {
                     //throw new Senparc.Weixin.MP.WeixinException("FinalResponseDocument不能为Null！", null);
                 }
+                else if (string.IsNullOrEmpty(Content))
+                {
+
+                }
                 else
                 {
                     context.HttpContext.Response.ClearContent();
