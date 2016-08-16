@@ -23,7 +23,7 @@ namespace Senparc.Weixin.MP.Entities
         /// </summary>
         public override Event Event
         {
-            get { return Event.user_scan_product; }
+            get { return Event.user_scan_product_verify_action; }
         }
 
         /// <summary>

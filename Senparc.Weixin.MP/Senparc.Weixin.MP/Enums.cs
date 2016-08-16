@@ -32,6 +32,8 @@
     修改描述：添加摇一摇周边【关联操作标志位】、【新增操作标志位】枚举类型
 ----------------------------------------------------------------*/
 
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.ComponentModel;
 
 namespace Senparc.Weixin.MP
@@ -432,6 +434,7 @@ namespace Senparc.Weixin.MP
     /// <summary>
     /// 卡券code码展示类型
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum Card_CodeType
     {
         /// <summary>
