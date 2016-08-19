@@ -138,6 +138,26 @@ namespace Senparc.Weixin.MP.CommonAPIs
                             type = rootButton.type
                         });
                     }
+                    else if (rootButton.type.Equals("MEDIA_ID", StringComparison.OrdinalIgnoreCase))
+                    {
+                        //扫码推事件
+                        buttonGroup.button.Add(new SingleMediaButton()
+                        {
+                            name = rootButton.name,
+                             media_id = rootButton.key,
+                            type = rootButton.type
+                        });
+                    }
+                    else if (rootButton.type.Equals("VIEW_LIMITED", StringComparison.OrdinalIgnoreCase))
+                    {
+                        //扫码推事件
+                        buttonGroup.button.Add(new SingleViewLimitedButton()
+                        {
+                            name = rootButton.name,
+                            media_id = rootButton.key,
+                            type = rootButton.type
+                        });
+                    }
                     else
                     {
                         //扫码推事件且弹出“消息接收中”提示框
@@ -240,6 +260,26 @@ namespace Senparc.Weixin.MP.CommonAPIs
                             {
                                 name = subSubButton.name,
                                 key = subSubButton.key,
+                                type = subSubButton.type
+                            });
+                        }
+                        else if (rootButton.type.Equals("MEDIA_ID", StringComparison.OrdinalIgnoreCase))
+                        {
+                            //扫码推事件
+                            buttonGroup.button.Add(new SingleMediaButton()
+                            {
+                                name = subSubButton.name,
+                                media_id = subSubButton.key,
+                                type = subSubButton.type
+                            });
+                        }
+                        else if (rootButton.type.Equals("VIEW_LIMITED", StringComparison.OrdinalIgnoreCase))
+                        {
+                            //扫码推事件
+                            buttonGroup.button.Add(new SingleViewLimitedButton()
+                            {
+                                name = subSubButton.name,
+                                media_id = subSubButton.key,
                                 type = subSubButton.type
                             });
                         }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Senparc.Weixin.MP.Entities.Menu.Buttons
+namespace Senparc.Weixin.MP.Entities.Menu
 {
     /// <summary>
     /// 用户点击media_id类型按钮后，微信服务器会将开发者填写的永久素材id对应的素材下发给用户，

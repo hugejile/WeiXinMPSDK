@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Senparc.Weixin.MP.Entities.Menu.Buttons
+namespace Senparc.Weixin.MP.Entities.Menu
 {
     /// <summary>
     /// 用户点击view_limited类型按钮后，微信客户端将打开开发者在按钮中填写的永久素材id对应的图文消息URL，永久素材类型只支持图文消息。
