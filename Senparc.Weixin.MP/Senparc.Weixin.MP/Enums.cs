@@ -300,7 +300,15 @@ namespace Senparc.Weixin.MP
         /// <summary>
         /// 弹出地理位置选择器
         /// </summary>
-        location_select
+        location_select,
+        /// <summary>
+        /// 下发消息（除文本消息）用户点击media_id类型按钮后
+        /// </summary>
+        media_id,
+        /// <summary>
+        /// 跳转图文消息URL用户点击view_limited类型按钮后
+        /// </summary>
+        view_limited
     }
 
     /// <summary>
