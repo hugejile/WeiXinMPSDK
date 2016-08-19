@@ -13,7 +13,7 @@ namespace Senparc.Weixin.MP.Test.AdvancedAPIs.ScanProduct
     public class ScanProductTest : CommonApiTest
     {
 
-        private static readonly string accessToken = "ZI27u_iZTXIqhBSrJ5-pe4w8ePmYDdS5g_qt7dElfhBW2zdrnNRGGRAlqBckaPs26kWNN9rdpR_8KzwqrqY6N_smN7LDu3jFMKHae5TbehSjIFRGBu2NStIj2fEGbdgEMPXiAAAYBJ";
+        private static readonly string accessToken = "w6MQfKyy1rv5-U_GKgdANx1UBMkhekNeTI6iO8O9oi-R7g1WycnBX3AzIz4SVHzl7R-FG1UcNXVe2VHskBB_feuiD5I50L86l0ElejUCiSlW7fWWD5dz9OnI3kLxMw3iZNIiAJALZU";
 
         private static readonly string goodKeyStr = "6954496901195";
 
@@ -38,9 +38,16 @@ namespace Senparc.Weixin.MP.Test.AdvancedAPIs.ScanProduct
         }
 
         [TestMethod]
-        public void GetProductsTest()
+        public void GetProductListTest()
         {
             var result = MP.AdvancedAPIs.ScanProduct.ScanProductApi.GetProductList(accessToken, 0, 100);
+            Assert.IsTrue(result.total >= 0);
+        }
+
+        [TestMethod]
+        public void GetAllProductListTest()
+        {
+            var result = MP.AdvancedAPIs.ScanProduct.ScanProductApi.GetAllProducts(accessToken);
             Assert.IsTrue(result.total >= 0);
         }
 
@@ -67,6 +74,11 @@ namespace Senparc.Weixin.MP.Test.AdvancedAPIs.ScanProduct
         [TestMethod]
         public void CreateProductTest()
         {
+            JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+            {
+                Converters = new List<JsonConverter> { new ScanProductActionListConverter() }
+            };
+
             //{"errcode":0,"errmsg":"ok","brand_tag_list":["稚优泉"],"verified_list":[{"verified_firm_code":69544969,"verified_cate_list":[{"verified_cate_id":538112978,"verified_cate_name":"彩妆\/香水\/美妆工具"}]}]}
 
             var keystr = "6954496901195";
@@ -122,14 +134,17 @@ namespace Senparc.Weixin.MP.Test.AdvancedAPIs.ScanProduct
 
 
 
-            //var sss = Newtonsoft.Json.JsonConvert.SerializeObject(product);
-            //var result = MP.AdvancedAPIs.ScanProduct.ScanProductApi.CreateProduct(accessToken, product);
-            //Assert.AreEqual(ReturnCode.请求成功, result.errcode);
+            var sss = Newtonsoft.Json.JsonConvert.SerializeObject(product);
+            var result = MP.AdvancedAPIs.ScanProduct.ScanProductApi.CreateProduct(accessToken, product);
+            Assert.AreEqual(ReturnCode.请求成功, result.errcode);
 
             var codeResult = MP.AdvancedAPIs.ScanProduct.ScanProductApi.GetProductQrCode(accessToken, keystr, ProductKeyStandardOptions.ean13, "123456");
 
+            var good = MP.AdvancedAPIs.ScanProduct.ScanProductApi.GetProduct(accessToken, keystr, ProductKeyStandardOptions.ean13);
+            Assert.AreEqual(ProductScanStatus.off, good.brand_info.base_info.status);
+
             product.brand_info.base_info.title = "测试商品2";
-            var result = MP.AdvancedAPIs.ScanProduct.ScanProductApi.UpdateProduct(accessToken, product);
+            result = MP.AdvancedAPIs.ScanProduct.ScanProductApi.UpdateProduct(accessToken, product);
             Assert.AreEqual(ReturnCode.请求成功, result.errcode);
 
             result = MP.AdvancedAPIs.ScanProduct.ScanProductApi.DeleteProduct(accessToken, keystr, ProductKeyStandardOptions.ean13);
@@ -139,7 +154,7 @@ namespace Senparc.Weixin.MP.Test.AdvancedAPIs.ScanProduct
         [TestMethod]
         public void PublicProductTest()
         {
-            var result = MP.AdvancedAPIs.ScanProduct.ScanProductApi.PublicProduct(accessToken, goodKeyStr, ProductKeyStandardOptions.ean13, ProductPublicStatus.Off);
+            var result = MP.AdvancedAPIs.ScanProduct.ScanProductApi.PublicProduct(accessToken, goodKeyStr, ProductKeyStandardOptions.ean13, ProductScanStatus.off);
         }
 
     }

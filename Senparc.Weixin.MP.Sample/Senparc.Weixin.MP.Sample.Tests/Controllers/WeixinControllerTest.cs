@@ -78,6 +78,18 @@ namespace Senparc.Weixin.MP.Sample.Tests.Controllers
 </xml>
 ";
 
+        private string xmlProductScanAuthorize = @"<xml>
+  <ToUserName><![CDATA[gh_36a1cea3527a]]></ToUserName>
+  <FromUserName><![CDATA[oHDSGwDnLvVbxfucMe0ojgtm0qBs]]></FromUserName>
+  <CreateTime>1468230808</CreateTime>
+  <MsgType><![CDATA[event]]></MsgType>
+  <Event><![CDATA[user_scan_product_verify_action]]></Event>
+  <KeyStandard><![CDATA[ean13]]></KeyStandard>
+  <KeyStr><![CDATA[6954496901652]]></KeyStr>
+  <Result><![CDATA[verify_not_pass]]></Result>
+  <ReasonMsg><![CDATA[请勿发布测试条码，测试请使用预览功能]]></ReasonMsg>
+</xml>";
+
         /// <summary>
         /// 初始化控制器及相关请求参数
         /// </summary>
@@ -126,6 +138,13 @@ namespace Senparc.Weixin.MP.Sample.Tests.Controllers
             Console.WriteLine(actual.Content);
             Console.WriteLine("页面用时（ms）：" + (et - st).TotalMilliseconds);
         }
+
+        [TestMethod]
+        public void ProductScanAuthorizePostTest()
+        {
+            PostTest(xmlProductScanAuthorize);
+        }
+
 
         [TestMethod]
         public void TextPostTest()

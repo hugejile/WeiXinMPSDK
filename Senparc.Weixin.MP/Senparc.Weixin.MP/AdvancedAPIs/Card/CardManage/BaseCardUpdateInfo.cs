@@ -106,7 +106,7 @@ namespace Senparc.Weixin.MP.AdvancedAPIs.Card
         /// 每人最大领取次数，不填写默认等于quantity。
         /// 非必填
         /// </summary>
-        public int get_limit { get; set; }
+        public long get_limit { get; set; }
         /// <summary>
         /// 领取卡券原生页面是否可分享，填写true 或false，true 代表可分享。默认可分享。
         /// 非必填

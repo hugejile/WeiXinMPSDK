@@ -79,7 +79,7 @@ namespace Senparc.Weixin.MP.AdvancedAPIs.Card
         /// 每人最大领取次数，不填写默认等于quantity。
         /// 非必填
         /// </summary>
-        public int get_limit { get; set; }
+        public long get_limit { get; set; }
         /// <summary>
         /// 是否自定义code 码。填写true或false，不填代表默认为false。
         /// 非必填
@@ -114,6 +114,17 @@ namespace Senparc.Weixin.MP.AdvancedAPIs.Card
         /// 商品信息
         /// </summary>
         public Card_BaseInfo_Sku sku { get; set; }
+
+        /// <summary>
+        /// 创建时间
+        /// </summary>
+        public int create_time { get; set; }
+
+        /// <summary>
+        /// 更新时间
+        /// </summary>
+        public int update_time { get; set; }
+
         /// <summary>
         /// 商户自定义cell 名称
         /// 非必填

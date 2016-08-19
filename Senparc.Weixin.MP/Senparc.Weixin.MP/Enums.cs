@@ -32,6 +32,8 @@
     修改描述：添加摇一摇周边【关联操作标志位】、【新增操作标志位】枚举类型
 ----------------------------------------------------------------*/
 
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.ComponentModel;
 
 namespace Senparc.Weixin.MP
@@ -440,6 +442,7 @@ namespace Senparc.Weixin.MP
     /// <summary>
     /// 卡券code码展示类型
     /// </summary>
+    [JsonConverter(typeof(StringEnumConverter))]
     public enum Card_CodeType
     {
         /// <summary>
@@ -744,16 +747,18 @@ namespace Senparc.Weixin.MP
         请求成功
     }
 
-    public enum ProductPublicStatus
-    {
-        On,
-        Off
-    }
-
     public enum ProductKeyStandardOptions
     {
         ean8,
         ean13 = 4,
         qrcode
+    }
+
+    public enum ProductScanStatus
+    {
+        on = 0,
+        off = 2,
+        check = 3,
+        reject = 4
     }
 }

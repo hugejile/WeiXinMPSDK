@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -43,6 +45,12 @@ namespace Senparc.Weixin.MP.AdvancedAPIs.ScanProduct
         /// 主页头部背景颜色，必须大写的例如FFFFFF，不要传入#
         /// </summary>
         public string color { get; set; }
+
+        /// <summary>
+        /// 商品主页的状态,on 为发布状态,off 为未发布状态,check 为审核中状态,reject 为审核未通过状态。
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ProductScanStatus status { get; set; }
 
         ///// <summary>
         ///// 

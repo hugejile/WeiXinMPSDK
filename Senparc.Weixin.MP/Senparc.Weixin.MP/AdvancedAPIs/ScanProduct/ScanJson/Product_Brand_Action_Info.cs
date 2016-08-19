@@ -68,6 +68,22 @@ namespace Senparc.Weixin.MP.AdvancedAPIs.ScanProduct
         public string digest { get; set; }
     }
 
+    public class Product_Brand_Action_Info_Linkimage : Product_Brand_Action_Info_Base
+    {
+        public Product_Brand_Action_Info_Linkimage()
+        {
+            type = "link";
+            showtype = "banner";
+            name = "banner";
+        }
+
+        public string showtype { get; set; }
+        public string name { get; set; }
+        public string link { get; set; }
+        public string image { get; set; }
+        public string digest { get; set; }
+    }
+
 
     public class Product_Brand_Action_Info_User : Product_Brand_Action_Info_Base
     {
@@ -85,6 +101,10 @@ namespace Senparc.Weixin.MP.AdvancedAPIs.ScanProduct
         {
             type = "card";
         }
+        //public string name { get; set; }
+
+        //public string desc { get; set; }
+
         /// <summary>
         /// card id 字段必填,该卡券 为非 自定义 code ( 概念 说明见 微信 卡券接口文档) 。
         /// </summary>

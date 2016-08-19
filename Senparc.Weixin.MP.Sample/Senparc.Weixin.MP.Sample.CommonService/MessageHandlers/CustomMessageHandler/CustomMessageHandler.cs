@@ -409,5 +409,10 @@ Url:{2}", requestMessage.Title, requestMessage.Description, requestMessage.Url);
             responseMessage.Content = "这条消息来自DefaultResponseMessage。";
             return responseMessage;
         }
+
+        public override IResponseMessageBase OnEvent_User_Scan_Product_Verify_Action(RequestMessageEvent_User_Scan_Product_Verify_Action requestMessage)
+        {
+            return base.OnEvent_User_Scan_Product_Verify_Action(requestMessage);
+        }
     }
 }
