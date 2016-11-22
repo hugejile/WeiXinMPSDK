@@ -144,7 +144,7 @@ namespace Senparc.Weixin.MP.CommonAPIs
                         buttonGroup.button.Add(new SingleMediaButton()
                         {
                             name = rootButton.name,
-                             media_id = rootButton.key,
+                            media_id = rootButton.media_id,
                             type = rootButton.type
                         });
                     }
@@ -154,7 +154,7 @@ namespace Senparc.Weixin.MP.CommonAPIs
                         buttonGroup.button.Add(new SingleViewLimitedButton()
                         {
                             name = rootButton.name,
-                            media_id = rootButton.key,
+                            media_id = rootButton.media_id,
                             type = rootButton.type
                         });
                     }
@@ -263,23 +263,23 @@ namespace Senparc.Weixin.MP.CommonAPIs
                                 type = subSubButton.type
                             });
                         }
-                        else if (rootButton.type.Equals("MEDIA_ID", StringComparison.OrdinalIgnoreCase))
+                        else if (subSubButton.type.Equals("MEDIA_ID", StringComparison.OrdinalIgnoreCase))
                         {
                             //扫码推事件
-                            buttonGroup.button.Add(new SingleMediaButton()
+                            subButton.sub_button.Add(new SingleMediaButton()
                             {
                                 name = subSubButton.name,
-                                media_id = subSubButton.key,
+                                media_id = subSubButton.media_id,
                                 type = subSubButton.type
                             });
                         }
-                        else if (rootButton.type.Equals("VIEW_LIMITED", StringComparison.OrdinalIgnoreCase))
+                        else if (subSubButton.type.Equals("VIEW_LIMITED", StringComparison.OrdinalIgnoreCase))
                         {
                             //扫码推事件
-                            buttonGroup.button.Add(new SingleViewLimitedButton()
+                            subButton.sub_button.Add(new SingleViewLimitedButton()
                             {
                                 name = subSubButton.name,
-                                media_id = subSubButton.key,
+                                media_id = subSubButton.media_id,
                                 type = subSubButton.type
                             });
                         }

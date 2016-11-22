@@ -13,13 +13,17 @@ namespace Senparc.Weixin.MP.Entities.Menu
     /// </summary>
     public class SingleMediaButton : SingleButton
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public SingleMediaButton()
             : base(ButtonType.media_id.ToString())
         {
 
         }
-        public string name { get; set; }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public string media_id { get; set; }
     }
 }
