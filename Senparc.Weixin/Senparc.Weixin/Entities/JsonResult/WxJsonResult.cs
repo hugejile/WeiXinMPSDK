@@ -38,6 +38,7 @@ namespace Senparc.Weixin.Entities
         string Json { get; set; }
     }
 
+    [Serializable]
     public class WxResult : IWxResult
     {
         [JsonIgnore]
