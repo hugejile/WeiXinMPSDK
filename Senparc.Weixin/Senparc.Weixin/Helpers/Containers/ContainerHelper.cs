@@ -8,13 +8,14 @@ namespace Senparc.Weixin.Helpers
 {
     public class ContainerHelper
     {
+        public static string CacheName = "";
         /// <summary>
         /// 获取缓存Key
         /// </summary>
         /// <returns></returns>
         public static string GetCacheKey(Type bagType)
         {
-            return string.Format("Container:{0}", bagType);
+            return string.Format("{1}_Container:{0}", bagType, CacheName);
         }
     }
 }
