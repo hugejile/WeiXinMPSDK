@@ -15,7 +15,7 @@ namespace Senparc.Weixin.Helpers
         /// <returns></returns>
         public static string GetCacheKey(Type bagType)
         {
-            return string.Format("{1}_Container:{0}", bagType, CacheName);
+            return string.Format("{1}Container:{0}", bagType, CacheName);
         }
     }
 }
